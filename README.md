@@ -33,6 +33,6 @@
 
 <h3>✒️ Autores</h3>
 <p> Vitor Aguiar - <a href="https://www.linkedin.com/in/vitor-aguiar-ab3937192/">LinkedIn</a></p>
-<p> Mariana Gonçalves- <a href="https://github.com/marianagsantana">Github</a></p>
+<p> Mariana Gonçalves - <a href="https://github.com/marianagsantana">Github</a></p>
 <p> Gabriel Oliveira - <a href="https://github.com/gaturama">Github</a></p>
 
