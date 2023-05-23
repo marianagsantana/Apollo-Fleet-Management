@@ -6,7 +6,7 @@ Neste documento, você encontrará informações essenciais sobre o projeto, inc
 
 O D.E.R é uma representação visual das entidades presentes no sistema e suas relações. Ele fornece uma visão clara da estrutura do banco de dados e das conexões entre os diferentes elementos.
 
-![Diagrama de Entidade e Relacionamento](./src/assets/images/DER.png)
+![Diagrama de Entidade e Relacionamento](../src/assets/images/DER.png)
 
 **Observação:**
 Este documento utiliza nomes em inglês para as entidades e elementos, a fim de manter o projeto padronizado. Essa escolha baseia-se no fato de que as nomenclaturas em inglês promovem consistência, clareza e seguem uma terminologia técnica padronizada.
@@ -15,7 +15,7 @@ Este documento utiliza nomes em inglês para as entidades e elementos, a fim de 
 
 M.E.R, por sua vez, é um modelo detalhado que descreve as entidades, seus atributos e os relacionamentos entre elas. Ele permite uma compreensão aprofundada do sistema e serve como base para o desenvolvimento do software.
 
-![Modelo Entidade Relacionamento](./src/assets/images/MER.png)
+![Modelo Entidade Relacionamento](../src/assets/images/MER.png)
 
 **Observação:**
 Este documento utiliza nomes em inglês para as entidades e elementos, a fim de manter o projeto padronizado. Essa escolha baseia-se no fato de que as nomenclaturas em inglês promovem consistência, clareza e seguem uma terminologia técnica padronizada.
@@ -24,7 +24,7 @@ Este documento utiliza nomes em inglês para as entidades e elementos, a fim de 
 
 Os requisitos de software são categorizados em dois grupos principais: requisitos funcionais e requisitos não funcionais. Os requisitos funcionais descrevem as funcionalidades detalhadas que o software deve oferecer, especificando as ações que o sistema deve realizar e os resultados esperados. Por outro lado, os requisitos não funcionais abordam aspectos importantes para a qualidade e desempenho global do software, como desempenho, segurança, usabilidade e escalabilidade. Ambos os tipos de requisitos são essenciais para garantir um software de alta qualidade e eficácia, atendendo às necessidades e expectativas dos usuários.
 
-![Requisitos do Software](./src/assets/images/software-requirements.png)
+![Requisitos do Software](../src/assets/images/software-requirements.png)
 
 ## Prototipagem de tela
 
@@ -69,5 +69,5 @@ Neste documento, foi optado por incluir apenas as telas específicas de cadastra
 
 Por fim, o fluxo de telas descreve a sequência de interações entre as diferentes telas do software. Ele demonstra como os usuários navegarão pelo sistema e como as telas se relacionam umas com as outras.
 
-![Fluxo de tela](../src/assets/images/workflow-screen.png.png)
+![Fluxo de tela](../src/assets/images/workflow-screen.png)
 
