@@ -4,24 +4,24 @@ namespace Models
     {
         public int ModelId {get; set;}
         public string Name {get; set;}
-        public int idBrand {get; set;}
+        public int BrandId {get; set;}
 
-        public ModelModel()
+        public Model()
         {
 
         }
 
-        protected ModelModel(string Name, int idBrand)
+        protected Model(string Name, int BrandId)
         {
             this.Name = Name;
-            this.idBrand = idBrand;
+            this.BrandId = BrandId;
         }
 
         public override string ToString()
         {
             return "Id:" + ModelId + "\n" +
             "Name:" + Name + "\n" +
-            "Brand:" + idBrand;
+            "Brand:" + BrandId;
         }
     }
 }

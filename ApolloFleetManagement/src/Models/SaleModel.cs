@@ -3,30 +3,30 @@ namespace Models
     public class Sale
     {
         public int SaleId {get; set;}
-        public int idCar {get; set;}
-        public int idClient {get; set;}
-        public int idSeller {get; set;}
+        public int CarId {get; set;}
+        public int ClientId {get; set;}
+        public int SellerId {get; set;}
 
-        public virtual Models.Seller Seller;
+        // public virtual Models.Seller Seller;
 
-        public SaleModel()
+        public Sale()
         {
 
         }
 
-        protected SaleModel(int idCar, int idClient, int idSeller)
+        protected Sale(int CarId, int ClientId, int SellerId)
         {
-            this.idCar = idCar;
-            this.idClient = idClient;
-            this.idSeller = idSeller;
+            this.CarId = CarId;
+            this.ClientId = ClientId;
+            this.SellerId = SellerId;
         }
 
         public override string ToString()
         {
             return "Id:" + SaleId + "\n" +
-            "Id Car:" + idCar + "\n" +
-            "Id Client:" + idClient + "\n" +
-            "Id Seller:" + idSeller;
+            "Id Car:" + CarId + "\n" +
+            "Id Client:" + ClientId + "\n" +
+            "Id Seller:" + SellerId;
         }
     }
 }

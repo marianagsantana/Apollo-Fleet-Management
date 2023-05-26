@@ -5,18 +5,18 @@ namespace Models
         public int DocumentId {get; set;}
         public string Type {get; set;}
         public string Value {get; set;}
-        public int idCar {get; set;}
+        public int CarId {get; set;}
 
-        public DocumentModel()
+        public Document()
         {
             
         }
 
-        protected DocumentModel(string Type, string Value, int idCar)
+        protected Document(string Type, string Value, int CarId)
         {
             this.Type = Type;
             this.Value = Value;
-            this.idCar = idCar;
+            this.CarId = CarId;
         }
 
         public override string ToString()
@@ -24,7 +24,7 @@ namespace Models
             return "Id:" + DocumentId + "\n" +
             " Type:" + Type + "\n" +
             " Value:" + Value + "\n" +
-            " idCar:" + idCar;
+            " CarId:" + CarId;
         }
     }
 }

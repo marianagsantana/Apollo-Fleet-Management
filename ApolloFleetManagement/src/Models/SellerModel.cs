@@ -8,12 +8,12 @@ namespace Models
         public string Telephone {get; set;}
         public int Registration {get; set;}
 
-        public SellerModel()
+        public Seller()
         {
 
         }
 
-        protected SaleModel(string Name, string Email, string Telephone, int Registration)
+        protected Seller(string Name, string Email, string Telephone, int Registration)
         {
             this.Name = Name;
             this.Email = Email;
