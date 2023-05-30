@@ -12,7 +12,7 @@ namespace Models
         public string RenavanCode { get; set; }
         public string FuelType { get; set; }
         public string TransmissionType { get; set; }
-        public int CarMilage { get; set; }
+        public int CarMileage { get; set; }
         public int ModelId { get; set; }
         public int BrandId { get; set; }
 
@@ -24,7 +24,7 @@ namespace Models
 
         }
 
-        protected Car(int Year, string Color, string LicensePlate, string BodyworkType, decimal Price, string ChassisCode, string RenavanCode, string FuelType, string TransmissionType, int CarMilage, int ModelId, int BrandId)
+        protected Car(int Year, string Color, string LicensePlate, string BodyworkType, decimal Price, string ChassisCode, string RenavanCode, string FuelType, string TransmissionType, int CarMileage, int ModelId, int BrandId)
         {
             this.Year = Year;
             this.Color = Color;
@@ -35,7 +35,7 @@ namespace Models
             this.RenavanCode = RenavanCode;
             this.FuelType = FuelType;
             this.TransmissionType = TransmissionType;
-            this.CarMilage = CarMilage;
+            this.CarMileage = CarMileage;
             this.ModelId = ModelId;
             this.BrandId = BrandId;
         }
@@ -52,7 +52,7 @@ namespace Models
             "RenavanCode:" + RenavanCode + "\n" +
             "FuelType:" + FuelType + "\n" +
             "ransmissionType:" + TransmissionType + "\n" +
-            "CarMilage:" + CarMilage + "\n" +
+            "CarMileage:" + CarMileage + "\n" +
             "ModelId:" + ModelId + "\n" +
             "BrandId:" + BrandId;
         }
