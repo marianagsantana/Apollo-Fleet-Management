@@ -3,59 +3,58 @@ using MyProject.Data;
 
 namespace Controller{
 
-    public class Car{
+    public class Sale{
         
-        public static void Create(Car car){
-           
+        public static void Create(Sale sale){
+        
             using (var context = new Context()){
-                context.Cars.Add(car);
+                context.Sales.Add(sale);
                 context.SaveChanges();
             }
         }
     
 
-        public static List<Car> Read()
+        public static List<Sale> Read()
         {
             using (var context = new Context())
             {
-                return context.Cars.ToList();
+                return context.Sales.ToList();
             }
         }
 
-        public static Car ReadById(int id)
+        public static Sale ReadById(int id)
         {
             using (var context = new Context())
             {
-                var car = context.Cars.Find(id);
-                if (car == null)
+                var sale = context.Sales.Find(id);
+                if (sale == null)
                 {
-                    throw new ArgumentException("Carro não encontrado");
+                    throw new ArgumentException("Venda não encontrada");
                 }
                 else
                 {
-                    return (Car) car;
+                    return (Sale) sale;
                 }
             }
 
         }
 
-        public static void Update(Car car)
+        public static void Update(Sale sale)
         {
             using (var context = new Context())
             {
-                context.Cars.Update(car);
+                context.Sales.Update(sale);
                 context.SaveChanges();
             }
         }
-        public static void Delete(Car car)
+        public static void Delete(Sale sale)
         {
             using (var context = new Context())
             {
-                context.Cars.Remove(car);
+                context.Sales.Remove(sale);
                 context.SaveChanges();
             }
         }
-        
+            
     }
-
 }

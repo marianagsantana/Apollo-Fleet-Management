@@ -3,59 +3,58 @@ using MyProject.Data;
 
 namespace Controller{
 
-    public class Car{
+    public class Brand{
+            
+        public static void Create(Brand brand){
         
-        public static void Create(Car car){
-           
             using (var context = new Context()){
-                context.Cars.Add(car);
+                context.Brands.Add(brand);
                 context.SaveChanges();
             }
         }
     
 
-        public static List<Car> Read()
+        public static List<Brand> Read()
         {
             using (var context = new Context())
             {
-                return context.Cars.ToList();
+                return context.Brands.ToList();
             }
         }
 
-        public static Car ReadById(int id)
+        public static Brand ReadById(int id)
         {
             using (var context = new Context())
             {
-                var car = context.Cars.Find(id);
-                if (car == null)
+                var brand = context.Brands.Find(id);
+                if (brand == null)
                 {
-                    throw new ArgumentException("Carro não encontrado");
+                    throw new ArgumentException("Marca não encontrada");
                 }
                 else
                 {
-                    return (Car) car;
+                    return (Brand) brand;
                 }
             }
 
         }
 
-        public static void Update(Car car)
+        public static void Update(Brand brand)
         {
             using (var context = new Context())
             {
-                context.Cars.Update(car);
+                context.Brands.Update(brand);
                 context.SaveChanges();
             }
         }
-        public static void Delete(Car car)
+        public static void Delete(Brand brand)
         {
             using (var context = new Context())
             {
-                context.Cars.Remove(car);
+                context.Brands.Remove(brand);
                 context.SaveChanges();
             }
         }
-        
+                    
     }
-
 }

@@ -3,59 +3,58 @@ using MyProject.Data;
 
 namespace Controller{
 
-    public class Car{
+    public class Model{
+            
+        public static void Create(Model model){
         
-        public static void Create(Car car){
-           
             using (var context = new Context()){
-                context.Cars.Add(car);
+                context.Models.Add(model);
                 context.SaveChanges();
             }
         }
     
 
-        public static List<Car> Read()
+        public static List<Model> Read()
         {
             using (var context = new Context())
             {
-                return context.Cars.ToList();
+                return context.Models.ToList();
             }
         }
 
-        public static Car ReadById(int id)
+        public static Model ReadById(int id)
         {
             using (var context = new Context())
             {
-                var car = context.Cars.Find(id);
-                if (car == null)
+                var model = context.Models.Find(id);
+                if (model == null)
                 {
-                    throw new ArgumentException("Carro não encontrado");
+                    throw new ArgumentException("Modelo não encontrado");
                 }
                 else
                 {
-                    return (Car) car;
+                    return (Model) model;
                 }
             }
 
         }
 
-        public static void Update(Car car)
+        public static void Update(Model model)
         {
             using (var context = new Context())
             {
-                context.Cars.Update(car);
+                context.Models.Update(model);
                 context.SaveChanges();
             }
         }
-        public static void Delete(Car car)
+        public static void Delete(Model model)
         {
             using (var context = new Context())
             {
-                context.Cars.Remove(car);
+                context.Models.Remove(model);
                 context.SaveChanges();
             }
         }
-        
+                
     }
-
 }

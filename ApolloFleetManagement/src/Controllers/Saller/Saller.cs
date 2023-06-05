@@ -3,59 +3,58 @@ using MyProject.Data;
 
 namespace Controller{
 
-    public class Car{
+    public class Saller{
         
-        public static void Create(Car car){
-           
+        public static void Create(Saller saller){
+        
             using (var context = new Context()){
-                context.Cars.Add(car);
+                context.Sallers.Add(saller);
                 context.SaveChanges();
             }
         }
     
 
-        public static List<Car> Read()
+        public static List<Saller> Read()
         {
             using (var context = new Context())
             {
-                return context.Cars.ToList();
+                return context.Sallers.ToList();
             }
         }
 
-        public static Car ReadById(int id)
+        public static Saller ReadById(int id)
         {
             using (var context = new Context())
             {
-                var car = context.Cars.Find(id);
-                if (car == null)
+                var saller = context.Sallers.Find(id);
+                if (saller == null)
                 {
-                    throw new ArgumentException("Carro não encontrado");
+                    throw new ArgumentException("Vendedor não encontrado");
                 }
                 else
                 {
-                    return (Car) car;
+                    return (Saller) saller;
                 }
             }
 
         }
 
-        public static void Update(Car car)
+        public static void Update(Saller saller)
         {
             using (var context = new Context())
             {
-                context.Cars.Update(car);
+                context.Sallers.Update(saller);
                 context.SaveChanges();
             }
         }
-        public static void Delete(Car car)
+        public static void Delete(Saller saller)
         {
             using (var context = new Context())
             {
-                context.Cars.Remove(car);
+                context.Sallers.Remove(saller);
                 context.SaveChanges();
             }
         }
         
     }
-
 }

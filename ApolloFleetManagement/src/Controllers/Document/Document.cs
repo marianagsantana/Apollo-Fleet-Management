@@ -3,59 +3,58 @@ using MyProject.Data;
 
 namespace Controller{
 
-    public class Car{
+    public class Document{
+            
+        public static void Create(Document document){
         
-        public static void Create(Car car){
-           
             using (var context = new Context()){
-                context.Cars.Add(car);
+                context.Documents.Add(document);
                 context.SaveChanges();
             }
         }
     
 
-        public static List<Car> Read()
+        public static List<Document> Read()
         {
             using (var context = new Context())
             {
-                return context.Cars.ToList();
+                return context.Documents.ToList();
             }
         }
 
-        public static Car ReadById(int id)
+        public static Document ReadById(int id)
         {
             using (var context = new Context())
             {
-                var car = context.Cars.Find(id);
-                if (car == null)
+                var document = context.Documents.Find(id);
+                if (document == null)
                 {
-                    throw new ArgumentException("Carro não encontrado");
+                    throw new ArgumentException("Documento não encontrado");
                 }
                 else
                 {
-                    return (Car) car;
+                    return (Document) document;
                 }
             }
 
         }
 
-        public static void Update(Car car)
+        public static void Update(Document document)
         {
             using (var context = new Context())
             {
-                context.Cars.Update(car);
+                context.Documents.Update(document);
                 context.SaveChanges();
             }
         }
-        public static void Delete(Car car)
+        public static void Delete(Document document)
         {
             using (var context = new Context())
             {
-                context.Cars.Remove(car);
+                context.Documents.Remove(document);
                 context.SaveChanges();
             }
         }
-        
+            
     }
-
 }
