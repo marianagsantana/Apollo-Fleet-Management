@@ -3,59 +3,58 @@ using MyProject.Data;
 
 namespace Controller{
 
-    public class Car{
-        
-        public static void Create(Car car){
+    public class Client{
+
+        public static void Create(Client client){
            
             using (var context = new Context()){
-                context.Cars.Add(car);
+                context.Clients.Add(client);
                 context.SaveChanges();
             }
         }
     
 
-        public static List<Car> Read()
+        public static List<Client> Read()
         {
             using (var context = new Context())
             {
-                return context.Cars.ToList();
+                return context.Clients.ToList();
             }
         }
 
-        public static Car ReadById(int id)
+        public static Client ReadById(int id)
         {
             using (var context = new Context())
             {
-                var car = context.Cars.Find(id);
-                if (car == null)
+                var client = context.Clients.Find(id);
+                if (client == null)
                 {
-                    throw new ArgumentException("Carro não encontrado");
+                    throw new ArgumentException("Cliente não encontrado");
                 }
                 else
                 {
-                    return (Car) car;
+                    return (Client) client;
                 }
             }
 
         }
 
-        public static void Update(Car car)
+        public static void Update(Client client)
         {
             using (var context = new Context())
             {
-                context.Cars.Update(car);
+                context.Clients.Update(client);
                 context.SaveChanges();
             }
         }
-        public static void Delete(Car car)
+        public static void Delete(Client client)
         {
             using (var context = new Context())
             {
-                context.Cars.Remove(car);
+                context.Clients.Remove(client);
                 context.SaveChanges();
             }
         }
         
     }
-
 }
