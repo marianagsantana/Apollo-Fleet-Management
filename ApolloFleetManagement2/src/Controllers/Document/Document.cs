@@ -1,61 +1,88 @@
-// using Models;
-// using Repository;
+namespace Controllers{
 
+    public class Document{
 
-// namespace Controller{
+        public static Models.Document CreateDocument(
+            string Type,
+            string Value,
+            int CarId
+        )
+        {
+            if(CarId > 0)
+            {
+                return Models.Document.CreateDocument(
+                    Type,
+                    Value,
+                    CarId
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Não foi possivel achar o veiculo");
+            }
+        }
 
-//     public class Document{
+        public static IEnumerable<Models.Document> ReadAllDocument()
+        {
+            IEnumerable<Models.Document> documents = Models.Document.ReadAllDocument();
+
+            if(documents != null){
+                return documents;
+            }
+            else
+            {
+                throw new System.ArgumentException("Nenhum documento encontrado");
+            }
+        }
+
+        public static Models.Document ReadDocumentById(int id)
+        {
+            Models.Document document = Models.Document.ReadByIdDocument(id);
             
-//         public static void Create(Document document){
-        
-//             using (var context = new Context()){
-//                 context.Documents.Add(document);
-//                 context.SaveChanges();
-//             }
-//         }
-    
+            if(document != null){
+                return document;
+            }
+            else
+            {
+                throw new System.ArgumentException("Documento não encontrado");
+            }
+        }
 
-//         public static List<Document> Read()
-//         {
-//             using (var context = new Context())
-//             {
-//                 return context.Documents.ToList();
-//             }
-//         }
+        public static void UpdateDocument(
+            int id,
+            string Type,
+            string Value,
+            int CarId
+        )
+        {
+            Models.Document document = Models.Document.ReadByIdDocument(id);
 
-//         public static Document ReadById(int id)
-//         {
-//             using (var context = new Context())
-//             {
-//                 var document = context.Documents.Find(id);
-//                 if (document == null)
-//                 {
-//                     throw new ArgumentException("Documento não encontrado");
-//                 }
-//                 else
-//                 {
-//                     return (Document) document;
-//                 }
-//             }
+            if(document != null){
+                Models.Document.UpdateDocument(
+                    id,
+                    Type,
+                    Value,
+                    CarId
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Documento não encontrado");
+            }
+        }
 
-//         }
+        public static void DeleteDocument(int id)
+        {
 
-//         public static void Update(Document document)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Documents.Update(document);
-//                 context.SaveChanges();
-//             }
-//         }
-//         public static void Delete(Document document)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Documents.Remove(document);
-//                 context.SaveChanges();
-//             }
-//         }
-            
-//     }
-// }
+            if(id > 0){
+                Models.Document.DeleteDocument(id);
+            }
+            else
+            {
+                throw new System.ArgumentException("Documento não encontrado");
+            }
+        }
+
+
+    }
+}

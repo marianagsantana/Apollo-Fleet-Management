@@ -89,7 +89,7 @@ namespace Models
             context.SaveChanges();
         }
 
-        private static Sale ReadByIdSale(
+        public static Sale ReadByIdSale(
             int SaleId
         )
         {

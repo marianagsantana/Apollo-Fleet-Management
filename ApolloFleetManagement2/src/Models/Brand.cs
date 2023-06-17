@@ -40,7 +40,7 @@ namespace Models
             );
         }
 
-        public static IEnumerable<Brand> ReadAllBrand()
+        public static IEnumerable<Brand> ReadAllBrands()
         {
             Repository.Context context = new Repository.Context();
             return context.Brands.ToList();           
@@ -51,7 +51,7 @@ namespace Models
             string Name
         )
         {
-            Brand brand = BuscarBrand(
+            Brand brand = ReadBrandById(
                 BrandId
             );
 
@@ -68,7 +68,7 @@ namespace Models
             int BrandId
         )
         {
-            Brand brand = BuscarBrand(
+            Brand brand = ReadBrandById(
                 BrandId
             );
 
@@ -77,12 +77,30 @@ namespace Models
             context.SaveChanges();
         }
 
-        private static Brand BuscarBrand(
+        public static Brand ReadBrandById(
             int BrandId
         )
         {
             Repository.Context context = new Repository.Context();
             Brand brand = context.Brands.Find(BrandId);
+            if (brand == null)
+            {
+                throw new ArgumentException("Marca não encontrada");
+            }
+            else
+            {
+                return brand;
+            }
+        }
+
+        public static Brand ReadBrandByName(
+            string Name
+        )
+        {
+            Repository.Context context = new Repository.Context();
+            Brand brand = context.Brands.FirstOrDefault(
+                brand => brand.Name == Name
+            );
             if (brand == null)
             {
                 throw new ArgumentException("Marca não encontrada");

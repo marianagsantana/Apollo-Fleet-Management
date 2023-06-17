@@ -98,7 +98,7 @@ namespace Models
             context.SaveChanges();
         }
         
-        private static Seller ReadByIdSeller(
+        public static Seller ReadByIdSeller(
             int SellerId
         )
         {

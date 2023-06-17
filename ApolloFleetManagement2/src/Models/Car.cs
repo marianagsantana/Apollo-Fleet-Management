@@ -97,7 +97,7 @@ namespace Models
             );
         }
 
-        public static IEnumerable<Car> ReadAllCar()
+        public static IEnumerable<Car> ReadAllCars()
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.ToList();
@@ -150,49 +150,51 @@ namespace Models
 
         public static void DeleteCar(int CarId)
         {
+            Car car = ReadByIdCar(CarId);
+
             Repository.Context context = new Repository.Context();
-            context.Cars.Remove(ReadByIdCar(CarId));
+            context.Cars.Remove(car);
             context.SaveChanges();
 
         }
 
-        public static IEnumerable<Car> ReadAllCarByBrand(int BrandId)
+        public static IEnumerable<Car> ReadAllCarsByBrand(int BrandId)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.BrandId == BrandId).ToList();
         }
 
-        public static IEnumerable<Car> ReadAllCarByModel(int ModelId)
+        public static IEnumerable<Car> ReadAllCarsByModel(int ModelId)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.ModelId == ModelId).ToList();
         }
 
-        public static IEnumerable<Car> ReadAllCarByYear(int Year)
+        public static IEnumerable<Car> ReadAllCarsByYear(int Year)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.Year == Year).ToList();
         }
 
-        public static IEnumerable<Car> ReadAllCarByColor(string Color)
+        public static IEnumerable<Car> ReadAllCarsByColor(string Color)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.Color == Color).ToList();
         }
 
-        public static IEnumerable<Car> ReadAllCarByLicensePlate(string LicensePlate)
+        public static IEnumerable<Car> ReadAllCarsByPlate(string LicensePlate)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.LicensePlate == LicensePlate).ToList();
         }
 
-        public static IEnumerable<Car> ReadAllCarByBodyworkType(string BodyworkType)
+        public static IEnumerable<Car> ReadAllCarsByBodyworkType(string BodyworkType)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.BodyworkType == BodyworkType).ToList();
         }
 
-        public static IEnumerable<Car> ReadAllCarByPrice(decimal Price)
+        public static IEnumerable<Car> ReadAllCarsByPrice(decimal Price)
         {
             Repository.Context context = new Repository.Context();
             return context.Cars.Where(c => c.Price == Price).ToList();

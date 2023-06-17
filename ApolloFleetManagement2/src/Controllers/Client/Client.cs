@@ -1,60 +1,110 @@
-// using Models;
-// using Repository;
+using Models;
 
-// namespace Controller{
+namespace Controllers{
 
-//     public class Client{
+    public class Client{
 
-//         public static void Create(Client client){
-           
-//             using (var context = new Context()){
-//                 context.Clients.Add(client);
-//                 context.SaveChanges();
-//             }
-//         }
-    
-
-//         public static List<Client> Read()
-//         {
-//             using (var context = new Context())
-//             {
-//                 return context.Clients.ToList();
-//             }
-//         }
-
-//         public static Client ReadById(int id)
-//         {
-//             using (var context = new Context())
-//             {
-//                 var client = context.Clients.Find(id);
-//                 if (client == null)
-//                 {
-//                     throw new ArgumentException("Cliente não encontrado");
-//                 }
-//                 else
-//                 {
-//                     return (Client) client;
-//                 }
-//             }
-
-//         }
-
-//         public static void Update(Client client)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Clients.Update(client);
-//                 context.SaveChanges();
-//             }
-//         }
-//         public static void Delete(Client client)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Clients.Remove(client);
-//                 context.SaveChanges();
-//             }
-//         }
+        public static Models.Client CreateClient(
+            string name,
+            string telephone,
+            string address,
+            string document
+        )
+        {
+            if(name.Length > 3)
+            {
+                return Models.Client.CreateClient(
+                    name,
+                    telephone,
+                    address,
+                    document
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Nome do cliente deve ter mais de 3 caracteres");
+            }
+        }
         
-//     }
-// }
+        public static Models.Client ReadClientById(int id)
+        {
+            Models.Client client = Models.Client.ReadByIdClient(id);
+            
+            if(client != null){
+                return client;
+            }
+            else
+            {
+                throw new System.ArgumentException("Cliente não encontrado");
+            }
+        }
+
+        public static IEnumerable<Models.Client> ReadClientByName(string name)
+        {
+            IEnumerable<Models.Client> clients = Models.Client.ReadByNameClient(name);
+
+            if(clients != null){
+                return clients;
+            }
+            else
+            {
+                throw new System.ArgumentException("Cliente não encontrado");
+            }
+        }
+
+        public static IEnumerable<Models.Client> ReadAllClients()
+        {
+            IEnumerable<Models.Client> clients = Models.Client.ReadAllClients();
+
+            if(clients != null){
+                return clients;
+            }
+            else
+            {
+                throw new System.ArgumentException("Nenhum cliente encontrado");
+            }
+        }
+
+        public static void UpdateClient(
+            int id,
+            string name,
+            string telephone,
+            string address,
+            string document
+        )
+        {
+            Models.Client client = Models.Client.ReadByIdClient(id);
+
+            if(client != null){
+                Models.Client.UpdateClient(
+                    id,
+                    name,
+                    telephone,
+                    address,
+                    document
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Cliente não encontrado");
+            }
+        }
+
+        public static void DeleteClient(int id)
+        {
+            Models.Client client = Models.Client.ReadByIdClient(id);
+
+            if(client != null){
+                Models.Client.DeleteClient(id);
+            }
+            else
+            {
+                throw new System.ArgumentException("Cliente não encontrado");
+            }
+        }
+
+
+
+
+    }
+}

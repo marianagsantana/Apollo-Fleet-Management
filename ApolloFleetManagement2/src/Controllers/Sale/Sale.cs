@@ -1,61 +1,88 @@
-// using Models;
-// using Repository;
+namespace Controllers{
 
+    public class Sale{
 
-// namespace Controller{
+        public static Models.Sale CreateSale(
+            int carId,
+            int clientId,
+            int sellerId
+        )
+        {
+            if(carId > 0)
+            {
+                return Models.Sale.CreateSale(
+                    carId,
+                    clientId,
+                    sellerId
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Não foi possivel criar a venda");
+            }
+        }
 
-//     public class Sale{
-        
-//         public static void Create(Sale sale){
-        
-//             using (var context = new Context()){
-//                 context.Sales.Add(Sale sale);
-//                 context.SaveChanges();
-//             }
-//         }
-    
+        public static IEnumerable<Models.Sale> ReadAllSale()
+        {
+            IEnumerable<Models.Sale> sales = Models.Sale.ReadAllSale();
 
-//         public static List<Sale> Read()
-//         {
-//             using (var context = new Context())
-//             {
-//                 return context.Sales.ToList();
-//             }
-//         }
+            if(sales != null){
+                return sales;
+            }
+            else
+            {
+                throw new System.ArgumentException("Nenhuma venda encontrada");
+            }
+        }
 
-//         public static Sale ReadById(int id)
-//         {
-//             using (var context = new Context())
-//             {
-//                 var sale = context.Sales.Find(id);
-//                 if (sale == null)
-//                 {
-//                     throw new ArgumentException("Venda não encontrada");
-//                 }
-//                 else
-//                 {
-//                     return (Sale) sale;
-//                 }
-//             }
-
-//         }
-
-//         public static void Update(Sale sale)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Sales.Update(sale);
-//                 context.SaveChanges();
-//             }
-//         }
-//         public static void Delete(Sale sale)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Sales.Remove(sale);
-//                 context.SaveChanges();
-//             }
-//         }
+        public static Models.Sale ReadSaleById(int id)
+        {
+            Models.Sale sale = Models.Sale.ReadByIdSale(id);
             
-//     }
-// }
+            if(sale != null){
+                return sale;
+            }
+            else
+            {
+                throw new System.ArgumentException("Venda não encontrada");
+            }
+        }
+
+        public static void UpdateSale(
+            int id,
+            int carId,
+            int clientId,
+            int sellerId
+        )
+        {
+            Models.Sale sale = Models.Sale.ReadByIdSale(id);
+
+            if(sale != null){
+                Models.Sale.UpdateSale(
+                    id,
+                    carId,
+                    clientId,
+                    sellerId
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Venda não encontrada");
+            }
+        }
+
+        public static void DeleteSale(int id)
+        {
+
+            if(id > 0){
+                Models.Sale.DeleteSale(id);
+            }
+            else
+            {
+                throw new System.ArgumentException("Venda não encontrada");
+            }
+        }
+
+
+    }
+}

@@ -1,61 +1,98 @@
-// using Models;
-// using Repository;
+namespace Controllers{
 
+    public class Saller{
 
-// namespace Controller{
+        public static Models.Seller CreateSaller(
+            string Name,
+            string Email,
+            string Telephone,
+            int Registration
+        )
+        {
+            if( Name.Length > 2 )
+            {
+                return Models.Seller.CreateSeller(
+                    Name,
+                    Email,
+                    Telephone,
+                    Registration
+                );
+            }
+            else
+            {
+                throw new Exception("Nome inválido");
+            }
+        }
 
-//     public class Saller{
-        
-//         public static void Create(Saller saller){
-        
-//             using (var context = new Context()){
-//                 context.Sallers.Add(saller);
-//                 context.SaveChanges();
-//             }
-//         }
-    
+        public static IEnumerable<Models.Seller> ReadAllSaller()
+        {
+            IEnumerable<Models.Seller> sallers = Models.Seller.ReadAllSeller();
 
-//         public static List<Saller> Read()
-//         {
-//             using (var context = new Context())
-//             {
-//                 return context.Sallers.ToList();
-//             }
-//         }
+            if(sallers != null){
+                return sallers;
+            }
+            else
+            {
+                throw new Exception("Nenhum vendedor encontrado");
+            }
+        }
 
-//         public static Saller ReadById(int id)
-//         {
-//             using (var context = new Context())
-//             {
-//                 var saller = context.Sallers.Find(id);
-//                 if (saller == null)
-//                 {
-//                     throw new ArgumentException("Vendedor não encontrado");
-//                 }
-//                 else
-//                 {
-//                     return (Saller) saller;
-//                 }
-//             }
+        public static Models.Seller ReadSallerById(int id)
+        {
+            Models.Seller saller = Models.Seller.ReadByIdSeller(id);
+            
+            if(saller != null){
+                return saller;
+            }
+            else
+            {
+                throw new Exception("Vendedor não encontrado");
+            }
+        }
 
-//         }
+        public static Models.Seller UpdateSaler(
+            int SallerId,
+            string Name,
+            string Email,
+            string Telephone,
+            int Registration
+        )
+        {
+            Models.Seller saller = ReadSallerById(
+                SallerId
+            );
 
-//         public static void Update(Saller saller)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Sallers.Update(saller);
-//                 context.SaveChanges();
-//             }
-//         }
-//         public static void Delete(Saller saller)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Sallers.Remove(saller);
-//                 context.SaveChanges();
-//             }
-//         }
-        
-//     }
-// }
+            if( saller != null)
+            {
+                return Models.Seller.UpdateSeller(
+                    SallerId,
+                    Name,
+                    Email,
+                    Telephone,
+                    Registration
+                );
+            }
+            else
+            {
+                throw new Exception("Vendedor não encontrado");
+            }
+        }
+
+        public static void DeleteSaller(
+            int SallerId
+        )
+        {
+            if( SallerId > 0)
+            {
+                Models.Seller.DeleteSeller(
+                    SallerId
+                );
+            }
+            else
+            {
+                throw new Exception("Vendedor não encontrado");
+            }
+        }
+
+    }
+}

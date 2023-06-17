@@ -1,60 +1,87 @@
-// using Models;
-// using Repository;
+using Models;
 
-// namespace Controller{
+namespace Controllers{
 
-//     public class Brand{
+    public class Brand{
+
+        public static Brand CreateBrand(
+            string name
+        )
+        {
+            if(name.Length > 3)
+            {
+                return Brand.CreateBrand(
+                    name
+                );
+            }
+            else
+            {
+                throw new System.ArgumentException("Nome da marca deve ter mais de 3 caracteres");
+            }
+        }
+
+        public static IEnumerable<Brand> ReadAllBrands()
+        {
+            IEnumerable<Brand> brands = Brand.ReadAllBrands();
+
+            if(brands != null){
+                return brands;
+            }
+            else
+            {
+                throw new System.ArgumentException("Nenhuma marca encontrada");
+            }
+        }
+
+        public static Brand ReadBrandById(int id)
+        {
+            Brand brand = Brand.ReadBrandById(id);
             
-//         public static void Create(Brand brand){
-        
-//             using (var context = new Context()){
-//                 context.Brands.Add(brand);
-//                 context.SaveChanges();
-//             }
-//         }
-    
+            if(brand != null){
+                return brand;
+            }
+            else
+            {
+                throw new System.ArgumentException("Marca não encontrada");
+            }
+        }
 
-//         public static List<Brand> Read()
-//         {
-//             using (var context = new Context())
-//             {
-//                 return context.Brands.ToList();
-//             }
-//         }
+        public static Brand ReadBrandByName(string name)
+        {
+            Brand brand = Brand.ReadBrandByName(name);
 
-//         public static Brand ReadById(int id)
-//         {
-//             using (var context = new Context())
-//             {
-//                 var brand = context.Brands.Find(id);
-//                 if (brand == null)
-//                 {
-//                     throw new ArgumentException("Marca não encontrada");
-//                 }
-//                 else
-//                 {
-//                     return (Brand) brand;
-//                 }
-//             }
+            if(brand != null){
+                return brand;
+            }
+            else
+            {
+                throw new System.ArgumentException("Marca não encontrada");
+            }
+        }
 
-//         }
+        public static void UpdateBrand(
+            int id,
+            string name
+        )
+        {
+            if((id != 0) && (name != null)){
+                Brand.UpdateBrand(id, name);
+            }else{
+                throw new System.ArgumentException("Id ou nome da marca não podem ser nulos");
+            }
 
-//         public static void Update(Brand brand)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Brands.Update(brand);
-//                 context.SaveChanges();
-//             }
-//         }
-//         public static void Delete(Brand brand)
-//         {
-//             using (var context = new Context())
-//             {
-//                 context.Brands.Remove(brand);
-//                 context.SaveChanges();
-//             }
-//         }
-                    
-//     }
-// }
+        }
+
+        public static void DeleteBrand(
+            int id
+        )
+        {
+            if(id != 0){
+                Brand.DeleteBrand(id);
+            }else{
+                throw new System.ArgumentException("Id da marca não pode ser nulo");
+            }
+        }      
+
+    }
+}

@@ -9,7 +9,12 @@ namespace Models
         public string Document {get; set;}
 
 
-        protected Client(string Name, string Telephone, string Address, string Document)
+        protected Client(
+            string Name, 
+            string Telephone, 
+            string Address, 
+            string Document
+        )
         {
             this.Name = Name;
             this.Telephone = Telephone;
@@ -56,7 +61,7 @@ namespace Models
             );
         }
 
-        public static IEnumerable<Client> ReadAllClient()
+        public static IEnumerable<Client> ReadAllClients()
         {
             Repository.Context context = new Repository.Context();
             return context.Clients.ToList();           
@@ -86,7 +91,7 @@ namespace Models
             return client;
         }
 
-        private static Client ReadByIdClient(
+        public static Client ReadByIdClient(
             int ClientId
         )
         {
@@ -94,6 +99,29 @@ namespace Models
             return context.Clients.Find(
                 ClientId
             );
+        }
+
+        public static void DeleteClient(
+            int ClientId
+        )
+        {
+            Client client = ReadByIdClient(
+                ClientId
+            );
+
+            Repository.Context context = new Repository.Context();
+            context.Clients.Remove(client);
+            context.SaveChanges();
+        }
+
+        public static IEnumerable<Client> ReadByNameClient(
+            string Name
+        )
+        {
+            Repository.Context context = new Repository.Context();
+            return context.Clients.Where(
+                c => c.Name.Contains(Name)
+            ).ToList();
         }
     }
 }

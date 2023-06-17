@@ -90,7 +90,7 @@ namespace Models
             context.SaveChanges();
         }
 
-        private static Document ReadByIdDocument(
+        public static Document ReadByIdDocument(
             int DocumentId
         )
         {

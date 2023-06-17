@@ -99,5 +99,13 @@ namespace Models
                 return model;
             }
         }
+
+        public static IEnumerable<Model> ReadByBrandIdModel(
+            int BrandId
+        )
+        {
+            Repository.Context context = new Repository.Context();
+            return context.Models.Where(model => model.BrandId == BrandId).ToList();
+        }
     }
 }
